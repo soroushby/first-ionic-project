@@ -1,13 +1,20 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { RecipesPage } from './recipes.page';
+import { RecipesPage } from "./recipes.page";
 
 const routes: Routes = [
   {
-    path: '',
-    component: RecipesPage
-  }
+    path: "",
+    component: RecipesPage,
+  },
+  {
+    path: ":recipeId",
+    loadChildren: () =>
+      import("./recipe-detail/recipe-detail.module").then(
+        (m) => m.RecipeDetailPageModule
+      ),
+  },
 ];
 
 @NgModule({
